@@ -1,11 +1,11 @@
 /******************************************************************************
 
- errorhandler.h for Allmogetracker
+ version.h for Allmogetracker
 
  Allmogetracker receives data from a GPS receiver and transmits it
  over amature radio using the APRS protocol version 1.0.
 
- Copyright (C)2011, Andreas Kingbäck  (andki234@gmail.com)
+ Copyright (C)2010, Andreas Kingbäck  (andki234@gmail.com)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -19,13 +19,22 @@
 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
  ******************************************************************************/
 
-#ifndef ERRORHANDLER_H_
-#define ERRORHANDLER_H_
+#ifndef _VERSION_H_
+#define _VERSION_H_
 
-#include <stdbool.h>
+#define VERSION_DATE        __DATE__
+#define VERSION_TIME        __TIME__
 
-bool ERROR_HANDLER__SignalError(void);
+#define	ALPHA 0
+#define BETA  1
 
-#endif /* ERRORHANDLER_H_ */
+#define VERSION_STATUS              BETA
+#define ENABLE_FULL_FUNCTIONALITY   YES
+
+static const char firm_version_P[] PROGMEM =
+    {'A', 'l', 'm', 't', 'r', 'a', 'c', 'k', 'e', 'r', ' ', 'V', '0', '.', '9', '0', 0x0A, 0x0D, 0x00};
+
+#endif /* _VERSION_H_ */

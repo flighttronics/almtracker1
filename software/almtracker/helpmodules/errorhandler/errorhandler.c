@@ -21,7 +21,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 #include <avr/wdt.h>
-
+#include "errorhandler.h"
 #include "StdDefines.h"
 #include "config.h"
 #include "led.h"
@@ -43,7 +43,7 @@ typedef enum
 } T_DOT;
 
 /******************************************************************************/
-static void __ErrDelay(uint32_t delay)
+static void _ErrDelay(uint32_t delay)
 /******************************************************************************/
 {
     uint32_t i;
@@ -63,9 +63,9 @@ static void __SendDot(T_DOT dot)
         case CW_DI:
         {
             LED__Set(STATLED, ON); // Status LED on
-            __ErrDelay(CW_SHORT_DELAY);
+            _ErrDelay(CW_SHORT_DELAY);
             LED__Set(STATLED, OFF); // Status LED off
-            __ErrDelay(CW_SHORT_DELAY);
+            _ErrDelay(CW_SHORT_DELAY);
 
             break;
         }
@@ -73,9 +73,9 @@ static void __SendDot(T_DOT dot)
         case CW_DA:
         {
             LED__Set(STATLED, ON); // Status LED on
-            __ErrDelay(CW_LONG_DELAY);
+            _ErrDelay(CW_LONG_DELAY);
             LED__Set(STATLED, OFF); // Status LED off
-            __ErrDelay(CW_SHORT_DELAY);
+            _ErrDelay(CW_SHORT_DELAY);
 
             break;
         }
@@ -83,49 +83,55 @@ static void __SendDot(T_DOT dot)
 }
 
 /******************************************************************************/
-static void __SendLEDError(void)
+static void _SendLEDError(void)
 /******************************************************************************/
 {
     // E
     __SendDot(CW_DI);
-    __ErrDelay(CW_LETTER_SPACE_DELAY);
+    _ErrDelay(CW_LETTER_SPACE_DELAY);
 
     // R
     __SendDot(CW_DI);
     __SendDot(CW_DA);
     __SendDot(CW_DI);
-    __ErrDelay(CW_LETTER_SPACE_DELAY);
+    _ErrDelay(CW_LETTER_SPACE_DELAY);
 
     // R
     __SendDot(CW_DI);
     __SendDot(CW_DA);
     __SendDot(CW_DI);
-    __ErrDelay(CW_LETTER_SPACE_DELAY);
+    _ErrDelay(CW_LETTER_SPACE_DELAY);
 
     // O
     __SendDot(CW_DA);
     __SendDot(CW_DA);
     __SendDot(CW_DA);
-    __ErrDelay(CW_LETTER_SPACE_DELAY);
+    _ErrDelay(CW_LETTER_SPACE_DELAY);
 
     // R
     __SendDot(CW_DI);
     __SendDot(CW_DA);
     __SendDot(CW_DI);
-    __ErrDelay(CW_LETTER_SPACE_DELAY);
+    _ErrDelay(CW_LETTER_SPACE_DELAY);
 }
 
 /******************************************************************************/
-void ERROR_HANDLER__SignalError(void)
+bool ERROR_HANDLER__SignalError(void)
 /******************************************************************************/
 {
+    bool status = true;
+
     LED__Set(STATLED, OFF); // Status LED off
 	 
-	 __ErrDelay(CW_WORD_SPACE_DELAY);
+	 _ErrDelay(CW_WORD_SPACE_DELAY);
 
     if (!CONFIG__ValidCallsign())
     {
-        __SendLEDError();
-        __ErrDelay(CW_WORD_SPACE_DELAY);
+        _SendLEDError();
+        _ErrDelay(CW_WORD_SPACE_DELAY);
+
+        status = false;
     }
+
+    return status;
 }

@@ -14,8 +14,7 @@
     <AssemblyName>almtracker</AssemblyName>
     <Name>almtracker</Name>
     <RootNamespace>almtracker</RootNamespace>
-    <avrtool>
-    </avrtool>
+    <avrtool>com.atmel.avrdbg.tool.ispmk2</avrtool>
     <com_atmel_avrdbg_tool_simulator>
       <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
       <ToolName xmlns="">AVR Simulator</ToolName>
@@ -27,7 +26,7 @@
         <ssl>False</ssl>
       </Channel>
     </com_atmel_avrdbg_tool_simulator>
-    <avrtoolinterface />
+    <avrtoolinterface>ISP</avrtoolinterface>
     <Language>C</Language>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
     <ToolchainFlavour>Native</ToolchainFlavour>
@@ -53,6 +52,19 @@
   </dependencies>
 </framework-data>
     </AsfFrameworkConfig>
+    <com_atmel_avrdbg_tool_ispmk2>
+      <ToolOptions>
+        <InterfaceProperties>
+          <JtagEnableExtResetOnStartSession>false</JtagEnableExtResetOnStartSession>
+          <IspClock>125000</IspClock>
+        </InterfaceProperties>
+        <InterfaceName>ISP</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.ispmk2</ToolType>
+      <ToolNumber>0000B0017452</ToolNumber>
+      <ToolName>AVRISP mkII</ToolName>
+    </com_atmel_avrdbg_tool_ispmk2>
+    <preserveEEPROM>True</preserveEEPROM>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputFileName>almtracker</OutputFileName>

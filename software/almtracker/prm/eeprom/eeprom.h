@@ -1,11 +1,11 @@
 /******************************************************************************
 
- errorhandler.h for Allmogetracker
+ eeprom.h for Allmogetracker
 
  Allmogetracker receives data from a GPS receiver and transmits it
  over amature radio using the APRS protocol version 1.0.
 
- Copyright (C)2011, Andreas Kingbäck  (andki234@gmail.com)
+ Copyright (C)2010, Andreas Kingbäck  (andki234@gmail.com)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -19,13 +19,24 @@
 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
  ******************************************************************************/
 
-#ifndef ERRORHANDLER_H_
-#define ERRORHANDLER_H_
+#ifndef _EEPROM_H_
+#define _EEPROM_H_
 
-#include <stdbool.h>
+#include <avr/eeprom.h>
 
-bool ERROR_HANDLER__SignalError(void);
+struct TEEPROM
+{
+    uint32_t reboot_counter;            // Reboot counter
+    uint8_t callsign_ee[7];             // Your CallSign + SSID
+    uint8_t send_packet_every_n_sec;    // Transmit Rate in seconds
+    uint8_t opbeacon_ee[50];            // Beacon text
+	uint8_t path;						// Path
+    uint8_t eeok[5];                    // eeOK string
+};
 
-#endif /* ERRORHANDLER_H_ */
+#define EEPROM_DATA_SIZE sizeof(struct TEEPROM)
+
+#endif

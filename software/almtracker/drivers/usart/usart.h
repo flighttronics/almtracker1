@@ -36,10 +36,15 @@
 /****************************************************************************
  ------------------ LOCAL (Variables, Constants & Defines) ----------------
  ****************************************************************************/
+#define BAUD_4800 1
+
 #ifdef _USART_C
 
-//#define UBRR_VALUE 0xBF // 4800 BAUD
-#define UBRR_VALUE 0x2F // 19200 BAUD
+#ifdef BAUD_4800
+    #define UBRR_VALUE 0xBF // 4800 BAUD
+#else
+    #define UBRR_VALUE 0x2F // 19200 BAUD
+#endif
 
 static uint8_t in_buffer[BUFFER_SIZE];
 static uint8_t in_head;

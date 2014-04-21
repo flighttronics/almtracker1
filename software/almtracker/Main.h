@@ -30,13 +30,7 @@
 
 #define _SETEEPROM_ 1
 
-// external function prototypes
-extern int main(void);
-extern void StartTransmiting(void);
-extern void EndTransmit(void);
-extern void ax25rxByte(unsigned char rxbyte);
 extern void mainDelay(unsigned char timeout);
-extern void Delay(unsigned char timeout);
 extern void DecrementTimeToTransmit(void);
 
 #endif /* _MAIN_H_ */

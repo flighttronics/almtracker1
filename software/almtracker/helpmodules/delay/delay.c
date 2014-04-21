@@ -53,8 +53,11 @@ void Delay(unsigned char timeout)
  */
 {
     delay = TRUE; // Set the condition variable
+
     wdt_reset(); // Kick the dog before we start
+
     TCNT2 = 255 - timeout; // Set desired delay
+
     while (delay)
     {
         // Do this until cleared by interrupt
