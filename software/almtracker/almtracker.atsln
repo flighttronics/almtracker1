@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "almtracker", "almtracker.cproj", "{67D85B12-7355-47E4-9EA8-030036362313}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67D85B12-7355-47E4-9EA8-030036362313}.Debug|AVR.ActiveCfg = Debug|AVR
+		{67D85B12-7355-47E4-9EA8-030036362313}.Debug|AVR.Build.0 = Debug|AVR
+		{67D85B12-7355-47E4-9EA8-030036362313}.Release|AVR.ActiveCfg = Release|AVR
+		{67D85B12-7355-47E4-9EA8-030036362313}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
