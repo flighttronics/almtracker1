@@ -116,10 +116,26 @@ static void _SendLEDError(void)
 }
 
 /******************************************************************************/
+static void _SendLEDOK(void)
+/******************************************************************************/
+{
+	 // O
+	 __SendDot(CW_DA);
+	 __SendDot(CW_DA);
+	 __SendDot(CW_DA);
+	 _ErrDelay(CW_LETTER_SPACE_DELAY);
+	 
+	 // K
+	 __SendDot(CW_DA);
+	 __SendDot(CW_DI);
+	 __SendDot(CW_DA);
+}
+
+/******************************************************************************/
 bool ERROR_HANDLER__SignalError(void)
 /******************************************************************************/
 {
-    bool status = true;
+    bool status;
 
     LED__Set(STATLED, OFF); // Status LED off
 	 
@@ -132,6 +148,12 @@ bool ERROR_HANDLER__SignalError(void)
 
         status = false;
     }
+	else
+	{
+		_SendLEDOK();
+		
+		status = true;
+	}
 
     return status;
 }

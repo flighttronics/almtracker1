@@ -158,91 +158,57 @@ extern void DecrementTimeToTransmit(void)
 
  */
 
-static void _StartUpBlink(void)
-{
-    uint8_t i, j;
-
-    for (i = 0; i < 30; i++)
-    {
-        for (j = 0; j < 200; j++)
-        {
-            Delay(255);
-        }
-        LED__Set(STATLED, OFF);
-
-        for (j = 0; j < 200; j++)
-        {
-            Delay(255);
-        }
-        LED__Set(STATLED, ON);
-
-        wdt_reset(); // Kick the dog before we start
-    }
-}
-
 /******************************************************************************/
 int main(void)
 /*******************************************************************************/
 {
-    SYSTEM__InitWatchDog();
+	SYSTEM__InitWatchDog();
     SYSTEM__InitSystem();
 
     SYSTEM__SendSystemInfoToUSART();
+	
+	ERROR_HANDLER__SignalError(); // Signal ERROR or OK if CALLSIGN is corrupt
+  
+    // Enable interrupts
+    sei();
 
-    if (ERROR_HANDLER__SignalError())
+    MsgHandler(0); // Reset the GPS decoding engine
+
+    // On reset minimum transmit time is 1min
+
+    seconds_to_next_transmit = 60;
+
+    // Set sleep mode
+    set_sleep_mode(SLEEP_MODE_IDLE);
+    sleep_enable();
+
+    while (1 == 1)
     {
+        Delay(250);
 
-        // Enable interrupts
-        sei();
+        wdt_reset(); // Reset watchdog timer
 
-        MsgHandler(0); // Reset the GPS decoding engine
-
-        // On reset minimum transmit time is 1min
-
-        seconds_to_next_transmit = 60;
-
-        // Set sleep mode
-        set_sleep_mode(SLEEP_MODE_IDLE);
-        sleep_enable();
-
-        // Initialization complete - system ready.  Run program loop indefinitely.
-        _StartUpBlink();
-
-        while (1 == 1)
+        if ((ValidFix() == VALID) && (CONFIG__ValidCallsign())) // Valid fix and valid callsign
         {
-            Delay(250);
+            LED__Set(STATLED, ON); // Status LED on
 
-            wdt_reset(); // Reset watchdog timer
-
-            if ((ValidFix() == VALID) && (CONFIG__ValidCallsign())) // Valid fix and valid callsign
+            if (seconds_to_next_transmit == 0)
             {
-                LED__Set(STATLED, ON); // Status LED on
-
-                if (seconds_to_next_transmit == 0)
-                {
-                    wdt_reset(); // Reset watchdog timer
-                    _StartTransmiting(); // Enable transmitter
-                    MsgSendPos(); // Send Position Report
-                    MsgSendBeacon(); // Send Beacon
-                    seconds_to_next_transmit = CONFIG__GetTXRate(); // x sec to next packet
-                    _EndTransmit(); // Disable transmitter
-                }
-            }
-            else
-            {
-                LED__Set(STATLED, OFF); // Status LED off
-                sleep_cpu();
+                 wdt_reset(); // Reset watchdog timer
+                 _StartTransmiting(); // Enable transmitter
+                 MsgSendPos(); // Send Position Report
+                 MsgSendBeacon(); // Send Beacon
+                 seconds_to_next_transmit = CONFIG__GetTXRate(); // x sec to next packet
+                 _EndTransmit(); // Disable transmitter
             }
         }
-    }
-    else
-    {
-        while (1 == 1)
+        else
         {
+            LED__Set(STATLED, OFF); // Status LED off
             sleep_cpu();
-        }
+         }
     }
-
+      
     return (1);
 }
 

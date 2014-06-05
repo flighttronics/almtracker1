@@ -35,6 +35,6 @@
 #define ENABLE_FULL_FUNCTIONALITY   YES
 
 static const char firm_version_P[] PROGMEM =
-    {'A', 'l', 'm', 't', 'r', 'a', 'c', 'k', 'e', 'r', ' ', 'V', '0', '.', '9', '0', 0x0A, 0x0D, 0x00};
+    {'A', 'l', 'm', 't', 'r', 'a', 'c', 'k', 'e', 'r', ' ', 'V', '0', '.', '9', '1', 0x0A, 0x0D, 0x00};
 
 #endif /* _VERSION_H_ */
