@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>5.0</ProjectVersion>
+    <ProjectGuid>{67d85b12-7355-47e4-9ea8-030036362313}</ProjectGuid>
+    <avrdevice>ATmega8</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <OutputFile>$(MSBuildProjectName).elf</OutputFile>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AvrGccProjectExtensions>
+    </AvrGccProjectExtensions>
+    <AssemblyName>almtracker</AssemblyName>
+    <Name>almtracker</Name>
+    <RootNamespace>almtracker</RootNamespace>
+    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
+    <com_atmel_avrdbg_tool_simulator>
+      <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolName xmlns="">AVR Simulator</ToolName>
+      <ToolNumber xmlns="">
+      </ToolNumber>
+      <Channel xmlns="">
+        <host>127.0.0.1</host>
+        <port>1138</port>
+        <ssl>False</ssl>
+      </Channel>
+    </com_atmel_avrdbg_tool_simulator>
+    <avrtoolinterface />
+    <Language>C</Language>
+    <ToolchainName>com.Atmel.AVRGCC8</ToolchainName>
+    <UseGlobalToolchain>True</UseGlobalToolchain>
+    <GlobalToolchainPath>C:\Program Files (x86)\Atmel\AVR Studio 5.0\AVR ToolChain\bin</GlobalToolchainPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>../prm/eeprom</Value>
+            <Value>../prm/stddefines</Value>
+            <Value>../prm/version</Value>
+            <Value>../helpmodules/ax25</Value>
+            <Value>../helpmodules/config</Value>
+            <Value>../helpmodules/delay</Value>
+            <Value>../helpmodules/messaging</Value>
+            <Value>../helpmodules/timerslot</Value>
+            <Value>../helpmodules/time</Value>
+            <Value>../system</Value>
+            <Value>../drivers/led</Value>
+            <Value>../drivers/usart</Value>
+            <Value>../drivers/tonegenerator</Value>
+            <Value>..</Value>
+            <Value>../helpmodules/errorhandler</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.compiler.warnings.WarningsAsErrors>True</avrgcc.compiler.warnings.WarningsAsErrors>
+        <avrgcc.compiler.warnings.Pedantic>True</avrgcc.compiler.warnings.Pedantic>
+        <avrgcc.compiler.warnings.PedanticWarningsAsErrors>True</avrgcc.compiler.warnings.PedanticWarningsAsErrors>
+        <avrgcc.compiler.miscellaneous.Verbose>True</avrgcc.compiler.miscellaneous.Verbose>
+      </AvrGcc>
+    </ToolchainSettings>
+    <MemorySettings>
+      <MemorySegments>
+        <InitialStack IsEnabled="1">
+          <Address>0x400</Address>
+        </InitialStack>
+      </MemorySegments>
+    </MemorySettings>
+    <GenerateHexFile>True</GenerateHexFile>
+    <GenerateMapFile>True</GenerateMapFile>
+    <GenerateListFile>True</GenerateListFile>
+    <GenerateEepFile>True</GenerateEepFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.level>Optimize more (-O2)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-g2)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
+    </ToolchainSettings>
+    <MemorySettings>
+    </MemorySettings>
+    <GenerateHexFile>True</GenerateHexFile>
+    <GenerateMapFile>True</GenerateMapFile>
+    <GenerateListFile>True</GenerateListFile>
+    <GenerateEepFile>True</GenerateEepFile>
+    <OutputFile>almtracker0.62.elf</OutputFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="drivers" />
+    <Folder Include="drivers\led" />
+    <Folder Include="drivers\usart" />
+    <Folder Include="drivers\tonegenerator" />
+    <Folder Include="helpmodules" />
+    <Folder Include="helpmodules\ax25" />
+    <Folder Include="helpmodules\config" />
+    <Folder Include="helpmodules\delay" />
+    <Folder Include="helpmodules\messaging" />
+    <Folder Include="helpmodules\errorhandler" />
+    <Folder Include="helpmodules\timerslot" />
+    <Folder Include="prm\eeprom" />
+    <Folder Include="prm\version" />
+    <Folder Include="prm\stddefines" />
+    <Folder Include="system" />
+    <Folder Include="prm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="drivers\led\led.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\led\led.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\tonegenerator\tonegenerator.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\tonegenerator\tonegenerator.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\usart\usart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\usart\usart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\ax25\ax25.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\ax25\ax25.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\config\config.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\config\config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\delay\delay.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\delay\delay.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\errorhandler\errorhandler.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\errorhandler\errorhandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\messaging\Messaging.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\messaging\Messaging.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\timerslot\timerslot.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="helpmodules\timerslot\timerslot.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Main.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="prm\eeprom\eeprom.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="prm\stddefines\StdDefines.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="prm\version\version.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="system\system.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="system\system.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
+</Project>
