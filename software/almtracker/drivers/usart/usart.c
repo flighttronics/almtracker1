@@ -40,6 +40,8 @@
 #include "led.h"
 #include "stddefines.h"
 #include "Messaging.h"
+#include "config.h"
+
 #undef _USART_C
 
 /******************************************************************************/
@@ -52,7 +54,7 @@ void USART__Initialize(void)
  * RETURN  :	None
  */
 {
-    UBRRL = UBRR_VALUE; // See usart.h
+    UBRRL = CONFIG__GetBaud(); 
 
 
     UCSRC = // Set to 8 data bits, no parity and 1stop bit

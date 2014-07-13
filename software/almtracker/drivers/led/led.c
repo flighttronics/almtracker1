@@ -48,6 +48,10 @@ void LED__Init(void)
 
     PORTC = 0x00; // Initial state is everything off
     DDRC  = 0x14; // Data direction register for port C
+	
+	PORTD = 0x00; // Initial state is everything off
+	DDRD = 0x30;  // Data direction register for port D
+	
     led_on_in_ms = 0;
 }
 
@@ -66,21 +70,60 @@ void LED__Set(int led, int state)
         case 1:
         {
             if (state == ON)
+			{
                 PORTC |= 0x04;
+			}
             else
-                PORTC &= ~(0X04);
+			{
+                PORTC &= ~(0x04);
+			}
 
             break;
         }
+		
         case 2:
         {
             if (state == ON)
+			{
                 PORTC |= 0x10;
+			}
             else
-                PORTC &= ~(0X10);
+			{
+                PORTC &= ~(0x10);
+			}
 
             break;
         }
+		
+#ifdef HW_VERSION_12
+		case 3:
+		{
+			if (state == ON)
+			{
+				PORTD |= 0x10;
+			}
+			else
+			{
+				PORTD &= ~(0x10);
+			}
+
+			break;
+		}
+		
+		case 4:
+		{
+			if (state == ON)
+			{
+				PORTD |= 0x20;
+			}
+			else
+			{
+				PORTD &= ~(0x20);
+			}
+
+			break;
+		}
+#endif			
     }
 }
 

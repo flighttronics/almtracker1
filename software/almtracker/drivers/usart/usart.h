@@ -30,21 +30,12 @@
 /****************************************************************************
  ------------------ GLOBAL (Variables, Constants & Defines) ----------------
  ****************************************************************************/
-
 #define	BUFFER_SIZE	0x20
 
 /****************************************************************************
  ------------------ LOCAL (Variables, Constants & Defines) ----------------
  ****************************************************************************/
-#define BAUD_4800 1
-
 #ifdef _USART_C
-
-#ifdef BAUD_4800
-    #define UBRR_VALUE 0xBF // 4800 BAUD
-#else
-    #define UBRR_VALUE 0x2F // 19200 BAUD
-#endif
 
 static uint8_t in_buffer[BUFFER_SIZE];
 static uint8_t in_head;

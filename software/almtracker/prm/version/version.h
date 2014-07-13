@@ -25,16 +25,15 @@
 #ifndef _VERSION_H_
 #define _VERSION_H_
 
-#define VERSION_DATE        __DATE__
-#define VERSION_TIME        __TIME__
+#define VERSION_DATE    __DATE__
+#define VERSION_TIME    __TIME__
 
-#define	ALPHA 0
-#define BETA  1
+#define HW_VERSION_12   YES
 
-#define VERSION_STATUS              BETA
-#define ENABLE_FULL_FUNCTIONALITY   YES
+static const char ptime[] PROGMEM = VERSION_TIME;
+static const char pdate[] PROGMEM = VERSION_DATE;
 
 static const char firm_version_P[] PROGMEM =
-    {'A', 'l', 'm', 't', 'r', 'a', 'c', 'k', 'e', 'r', ' ', 'V', '0', '.', '9', '1', 0x0A, 0x0D, 0x00};
+    {'A', 'l', 'm', 't', 'r', 'a', 'c', 'k', 'e', 'r', ' ', 'V', '1', '.', '0', '0', 0x0A, 0x0D, 0x00};
 
 #endif /* _VERSION_H_ */

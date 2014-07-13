@@ -45,11 +45,13 @@ void CONFIG__WriteDefaultSettings(void);
 void EEPROM__ReadBlock(void* eeprom);
 void EEPROM__WriteBlock(void* eeprom);
 void CONFIG__IncRebootCounter(void);
+
 void CONFIG__GetCallsign(char *callsign);
 bool CONFIG__ValidCallsign(void);
 void CONFIG__GetBeacon(char *beacon, char beacontype);
 
+uint8_t CONFIG__GetBaud(void);
 uint8_t CONFIG__GetTXRate(void);
-int8_t CONFIG__GetPath(void);
+int8_t  CONFIG__GetPath(void);
 
 #endif /* _CONFIG_H_ */

@@ -64,6 +64,7 @@ void CONFIG__WriteDefaultSettings(void)
     memcpy((char*) e.callsign_ee, nocall, sizeof(nocall)); // NOCALL
     e.send_packet_every_n_sec = 120; // 120sec
     e.path = 0; // Standard path
+	e.baud = 0xBF; // 0xBF = 4800 Baud or 0x2F = 19200 BAUD 
     strcpy((char*) e.opbeacon_ee, "NOBEACON\0"); // NOBEACON
     strcpy((char*) e.eeok, "eeOK\0"); // Indicates that EEPROM is Aligned
 
@@ -124,6 +125,19 @@ extern uint8_t CONFIG__GetTXRate(void)
     }
 
     return result;
+}
+
+//******************************************************************************/
+extern uint8_t CONFIG__GetBaud(void)
+/*******************************************************************************/
+{
+	uint8_t result;
+
+	eeprom_read_block(&e, 0, EEPROM_DATA_SIZE);
+
+	memcpy(&result, &e.baud, sizeof(result));
+
+	return result;
 }
 
 /******************************************************************************/

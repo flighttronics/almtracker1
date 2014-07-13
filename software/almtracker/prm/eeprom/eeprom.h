@@ -34,6 +34,7 @@ struct TEEPROM
     uint8_t send_packet_every_n_sec;    // Transmit Rate in seconds
     uint8_t opbeacon_ee[50];            // Beacon text
 	uint8_t path;						// Path
+	uint8_t baud;						// Baud setting for device 
     uint8_t eeok[5];                    // eeOK string
 };
 
