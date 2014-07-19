@@ -28,17 +28,24 @@
 /****************************************************************************
  ------------------ GLOBAL (Variables, Constants & Defines) ----------------
  ****************************************************************************/
-
-#define TXLED    0x01
-#define STATLED  0x02
+#ifdef HW_VERSION_12
+	#define TXLED    0x01
+	#define GPSLED   0x02
+	#define BAUDLED  0x03
+	#define STATLED  0x04
+#else
+	#define TXLED    0x01
+	#define GPSLED   0x02
+	#define STATLED  0x02
+#endif
 
 /****************************************************************************
  ---------------------- GLOBAL (Function Prototypes)  ----------------------
  ****************************************************************************/
-
 void LED__Init(void);
 void LED__Set(int led, int state);
-void LED__FlashStatusLED(void);
+void LED__Power(int led, int state);
+void LED__FlashGPSLED(void);
 void LED__DecrementLEDOnTime(void);
 
 #endif /* _LED_H_ */

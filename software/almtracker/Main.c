@@ -162,13 +162,25 @@ extern void DecrementTimeToTransmit(void)
 int main(void)
 /*******************************************************************************/
 {
-	SYSTEM__InitWatchDog();
+    SYSTEM__InitWatchDog();
     SYSTEM__InitSystem();
 
     SYSTEM__SendSystemInfoToUSART();
-	
-	ERROR_HANDLER__SignalError(); // Signal ERROR or OK if CALLSIGN is corrupt
-  
+
+#ifdef HW_VERSION_12
+    if (CONFIG__GetBaud() == BUAD_19200)
+    {
+        LED__Set(BAUDLED,ON);
+    }
+#endif
+
+
+    ERROR_HANDLER__SignalError(); // Signal ERROR or OK if CALLSIGN is corrupt
+
+#ifdef HW_VERSION_12
+    LED__Power(BAUDLED, OFF);
+    LED__Power(STATLED, OFF);
+#endif
     // Enable interrupts
     sei();
 
@@ -190,25 +202,25 @@ int main(void)
 
         if ((ValidFix() == VALID) && (CONFIG__ValidCallsign())) // Valid fix and valid callsign
         {
-            LED__Set(STATLED, ON); // Status LED on
+            LED__Set(GPSLED, ON); // Status LED on
 
             if (seconds_to_next_transmit == 0)
             {
-                 wdt_reset(); // Reset watchdog timer
-                 _StartTransmiting(); // Enable transmitter
-                 MsgSendPos(); // Send Position Report
-                 MsgSendBeacon(); // Send Beacon
-                 seconds_to_next_transmit = CONFIG__GetTXRate(); // x sec to next packet
-                 _EndTransmit(); // Disable transmitter
+                wdt_reset(); // Reset watchdog timer
+                _StartTransmiting(); // Enable transmitter
+                MsgSendPos(); // Send Position Report
+                MsgSendBeacon(); // Send Beacon
+                seconds_to_next_transmit = CONFIG__GetTXRate(); // x sec to next packet
+                _EndTransmit(); // Disable transmitter
             }
         }
         else
         {
             LED__Set(STATLED, OFF); // Status LED off
             sleep_cpu();
-         }
+        }
     }
-      
+
     return (1);
 }
 

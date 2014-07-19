@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.callSign_textBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ssid_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -41,6 +42,7 @@
             this.writeConfig_button = new System.Windows.Forms.Button();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.comPort_comboBox = new System.Windows.Forms.ComboBox();
             this.baudRate_comboBox = new System.Windows.Forms.ComboBox();
             this.textBoxInfo = new System.Windows.Forms.TextBox();
             this.path_groupBox = new System.Windows.Forms.GroupBox();
@@ -51,7 +53,7 @@
             this.baudRateAlm_comboBox = new System.Windows.Forms.ComboBox();
             this.tabTest = new System.Windows.Forms.TabPage();
             this.tabTerminal = new System.Windows.Forms.TabPage();
-            this.comPort_comboBox = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ssid_numericUpDown)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -63,6 +65,7 @@
             this.tabSettings.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabTerminal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // callSign_textBox
@@ -200,6 +203,18 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Communication Settings";
             // 
+            // comPort_comboBox
+            // 
+            this.comPort_comboBox.DisplayMember = "1";
+            this.comPort_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comPort_comboBox.FormattingEnabled = true;
+            this.comPort_comboBox.Location = new System.Drawing.Point(6, 18);
+            this.comPort_comboBox.Name = "comPort_comboBox";
+            this.comPort_comboBox.Size = new System.Drawing.Size(125, 21);
+            this.comPort_comboBox.TabIndex = 9;
+            this.comPort_comboBox.ValueMember = "1";
+            this.comPort_comboBox.SelectedIndexChanged += new System.EventHandler(this.ComPortcomboBox_SelectedIndexChanged);
+            // 
             // baudRate_comboBox
             // 
             this.baudRate_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -310,6 +325,7 @@
             this.baudRateAlm_comboBox.Size = new System.Drawing.Size(117, 21);
             this.baudRateAlm_comboBox.TabIndex = 8;
             this.baudRateAlm_comboBox.ValueMember = "1";
+            this.baudRateAlm_comboBox.SelectedIndexChanged += new System.EventHandler(this.baudRateAlm_comboBox_SelectedIndexChanged);
             // 
             // tabTest
             // 
@@ -332,16 +348,15 @@
             this.tabTerminal.Text = "Terminal";
             this.tabTerminal.UseVisualStyleBackColor = true;
             // 
-            // comPort_comboBox
+            // pictureBox1
             // 
-            this.comPort_comboBox.DisplayMember = "1";
-            this.comPort_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comPort_comboBox.FormattingEnabled = true;
-            this.comPort_comboBox.Location = new System.Drawing.Point(6, 18);
-            this.comPort_comboBox.Name = "comPort_comboBox";
-            this.comPort_comboBox.Size = new System.Drawing.Size(125, 21);
-            this.comPort_comboBox.TabIndex = 9;
-            this.comPort_comboBox.ValueMember = "1";
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(155, 321);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(222, 65);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -349,6 +364,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(393, 400);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -371,6 +387,7 @@
             this.groupBox5.ResumeLayout(false);
             this.tabTerminal.ResumeLayout(false);
             this.tabTerminal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -400,6 +417,7 @@
         private System.Windows.Forms.ComboBox baudRateAlm_comboBox;
         private System.Windows.Forms.ComboBox baudRate_comboBox;
         private System.Windows.Forms.ComboBox comPort_comboBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

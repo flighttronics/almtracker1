@@ -28,8 +28,6 @@
 #define VERSION_DATE    __DATE__
 #define VERSION_TIME    __TIME__
 
-#define HW_VERSION_12   YES
-
 static const char ptime[] PROGMEM = VERSION_TIME;
 static const char pdate[] PROGMEM = VERSION_DATE;
 

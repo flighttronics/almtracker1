@@ -188,7 +188,7 @@ SIGNAL(USART_RXC_vect)
  * RETURN  :	None
  */
 {
-    LED__FlashStatusLED();
+    LED__FlashGPSLED();
 
     if (++in_head == BUFFER_SIZE)
     {

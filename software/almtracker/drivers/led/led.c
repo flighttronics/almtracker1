@@ -22,12 +22,12 @@
 
  ******************************************************************************/
 
-// OS headers
+//-------------------------------------------------------------------------------------------------
+//--------  I N C L U D E  ------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 #include <avr/io.h>
 #include <avr/interrupt.h>
-
 #include "led.h"
-// General purpose include files
 #include "StdDefines.h"
 
 static uint_least16_t led_on_in_ms = 0;
@@ -44,15 +44,77 @@ void LED__Init(void)
 {
     // PORT C -
     //	Bit/Pin 2 (out) connected to the PTT circuitry
-    //	Bit/Pin 4 (out) Status LED
+    //	Bit/Pin 4 (out) GPS LED
 
     PORTC = 0x00; // Initial state is everything off
-    DDRC  = 0x14; // Data direction register for port C
-	
-	PORTD = 0x00; // Initial state is everything off
-	DDRD = 0x30;  // Data direction register for port D
-	
+    DDRC = 0x14; // Data direction register for port C
+
+#ifdef HW_VERSION_12
+
+    // PORT D -
+    //  Bit/Pin 5 (out) connected to baudrate indicator (ON = 19200)
+    //  Bit/Pin 6 (out) Status LED
+
+    PORTD = 0x00;// Initial state is everything off
+    DDRD = 0x60;// Data direction register for port D
+#endif
+
     led_on_in_ms = 0;
+}
+
+void LED__Power(int led, int state)
+{
+    switch (led)
+    {
+        case 1:
+        {
+            break;
+        }
+
+        case 2:
+        {
+            if (state == ON)
+            {
+                DDRD |= 0x10;
+            }
+            else
+            {
+                DDRD &= ~(0x10);
+            }
+
+            break;
+        }
+
+#ifdef HW_VERSION_12
+        case 3:
+        {
+            if (state == ON)
+            {
+                DDRD |= 0x20;
+            }
+            else
+            {
+                DDRD &= ~(0x20);
+            }
+
+            break;
+        }
+
+        case 4:
+        {
+            if (state == ON)
+            {
+                DDRD |= 0x40;
+            }
+            else
+            {
+                DDRD &= ~(0x40);
+            }
+
+            break;
+        }
+#endif
+    }
 }
 
 /******************************************************************************/
@@ -70,65 +132,65 @@ void LED__Set(int led, int state)
         case 1:
         {
             if (state == ON)
-			{
+            {
                 PORTC |= 0x04;
-			}
+            }
             else
-			{
+            {
                 PORTC &= ~(0x04);
-			}
+            }
 
             break;
         }
-		
+
         case 2:
         {
             if (state == ON)
-			{
+            {
                 PORTC |= 0x10;
-			}
+            }
             else
-			{
+            {
                 PORTC &= ~(0x10);
-			}
+            }
 
             break;
         }
-		
+
 #ifdef HW_VERSION_12
-		case 3:
-		{
-			if (state == ON)
-			{
-				PORTD |= 0x10;
-			}
-			else
-			{
-				PORTD &= ~(0x10);
-			}
+            case 3:
+            {
+                if (state == ON)
+                {
+                    PORTD |= 0x20;
+                }
+                else
+                {
+                    PORTD &= ~(0x20);
+                }
 
-			break;
-		}
-		
-		case 4:
-		{
-			if (state == ON)
-			{
-				PORTD |= 0x20;
-			}
-			else
-			{
-				PORTD &= ~(0x20);
-			}
+                break;
+            }
 
-			break;
-		}
-#endif			
+            case 4:
+            {
+                if (state == ON)
+                {
+                    PORTD |= 0x40;
+                }
+                else
+                {
+                    PORTD &= ~(0x40);
+                }
+
+                break;
+            }
+#endif
     }
 }
 
 /******************************************************************************/
-void LED__FlashStatusLED(void)
+void LED__FlashGPSLED(void)
 /******************************************************************************
  * ABSTRACT:    This function flash the status led once
  *

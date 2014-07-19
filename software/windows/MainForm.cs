@@ -31,12 +31,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
+
 namespace AlmConfig
 {     
+
+    
     public partial class MainForm : Form
     {
         // Boolean flag used to determine when a space character than a number is entered.
         private bool spaceCharEntered = false;
+        private int BAUD_19200 = 0x2F;
+        private int BAUD_4800 = 0xBF;
             
         public MainForm()
         {
@@ -166,7 +172,20 @@ namespace AlmConfig
                     a = 0x7C;
 
                     routing_comboBox.SelectedIndex = int.Parse(data.Substring(a, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
-                    
+
+
+                    // Extract baud rate
+                    a += 2;
+
+                    if (int.Parse(data.Substring(a, 2), System.Globalization.NumberStyles.AllowHexSpecifier) == BAUD_4800)
+                    { 
+                        baudRateAlm_comboBox.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        baudRateAlm_comboBox.SelectedIndex = 1;
+                    }
+           
                     writeConfig_button.Enabled = true;  // Enable Write config
                 }
                 catch (System.Exception ex)
@@ -236,6 +255,20 @@ namespace AlmConfig
 
             // Add path 
             b = routing_comboBox.SelectedIndex;
+            output = output + b.ToString("X2");
+
+            // Add baudrate factor
+            b = baudRateAlm_comboBox.SelectedIndex;
+
+            if (b==1)
+            {
+                b = BAUD_19200;
+            }
+            else
+            {
+                b = BAUD_4800;
+            }
+
             output = output + b.ToString("X2");
 
             //Add eeOK
@@ -355,6 +388,11 @@ namespace AlmConfig
             {
                 e.Handled = true;   // Stop the space character from being entered into the callsign textbox
             }
+        }
+
+        private void baudRateAlm_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

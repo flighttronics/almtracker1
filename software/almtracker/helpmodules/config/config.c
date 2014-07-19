@@ -64,7 +64,7 @@ void CONFIG__WriteDefaultSettings(void)
     memcpy((char*) e.callsign_ee, nocall, sizeof(nocall)); // NOCALL
     e.send_packet_every_n_sec = 120; // 120sec
     e.path = 0; // Standard path
-	e.baud = 0xBF; // 0xBF = 4800 Baud or 0x2F = 19200 BAUD 
+	e.baud = BUAD_4800; 
     strcpy((char*) e.opbeacon_ee, "NOBEACON\0"); // NOBEACON
     strcpy((char*) e.eeok, "eeOK\0"); // Indicates that EEPROM is Aligned
 
