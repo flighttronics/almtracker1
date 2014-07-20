@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.Button tx_test_button;
             this.callSign_textBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ssid_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -54,6 +55,7 @@
             this.tabTest = new System.Windows.Forms.TabPage();
             this.tabTerminal = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            tx_test_button = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ssid_numericUpDown)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -64,6 +66,7 @@
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tabTest.SuspendLayout();
             this.tabTerminal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -330,6 +333,7 @@
             // tabTest
             // 
             this.tabTest.AutoScroll = true;
+            this.tabTest.Controls.Add(tx_test_button);
             this.tabTest.Location = new System.Drawing.Point(4, 22);
             this.tabTest.Name = "tabTest";
             this.tabTest.Padding = new System.Windows.Forms.Padding(3);
@@ -358,6 +362,16 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // tx_test_button
+            // 
+            tx_test_button.Location = new System.Drawing.Point(6, 16);
+            tx_test_button.Name = "tx_test_button";
+            tx_test_button.Size = new System.Drawing.Size(75, 23);
+            tx_test_button.TabIndex = 0;
+            tx_test_button.Text = "TX Test";
+            tx_test_button.UseVisualStyleBackColor = true;
+            tx_test_button.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +399,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.tabTest.ResumeLayout(false);
             this.tabTerminal.ResumeLayout(false);
             this.tabTerminal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

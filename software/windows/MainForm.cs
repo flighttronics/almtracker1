@@ -394,5 +394,27 @@ namespace AlmConfig
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort.Open();
+                serialPort.DiscardInBuffer();
+                serialPort.DiscardOutBuffer();
+                serialPort.ReadTimeout = 1500;
+                serialPort.NewLine = "\r\n";
+            
+                serialPort.WriteLine("$GPRMC,101457,A,5832.514,N,01620.754,E,000.0,162.6,130708,002.6,E*75");
+                serialPort.WriteLine("$GPGGA,101456,5832.514,N,01620.754,E,1,05,03,000043,M,0030,M,,*56");
+
+                serialPort.Close();
+            }
+            catch (System.Exception ex)
+            {
+                serialPort.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
