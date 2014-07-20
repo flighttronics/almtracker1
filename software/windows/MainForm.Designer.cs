@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button tx_test_button;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.Button tx_test_button;
             this.callSign_textBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ssid_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -395,6 +396,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
+            // 
+            // tx_test_button
+            // 
+            tx_test_button.Location = new System.Drawing.Point(6, 16);
+            tx_test_button.Name = "tx_test_button";
+            tx_test_button.Size = new System.Drawing.Size(75, 23);
+            tx_test_button.TabIndex = 0;
+            tx_test_button.Text = "TX Test";
+            tx_test_button.UseVisualStyleBackColor = true;
+            tx_test_button.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // MainForm
             // 
