@@ -32,6 +32,6 @@ static const char ptime[] PROGMEM = VERSION_TIME;
 static const char pdate[] PROGMEM = VERSION_DATE;
 
 static const char firm_version_P[] PROGMEM =
-    {'A', 'l', 'm', 't', 'r', 'a', 'c', 'k', 'e', 'r', ' ', 'V', '1', '.', '0', '0', 0x0A, 0x0D, 0x00};
+    {'A', 'l', 'm', 't', 'r', 'a', 'c', 'k', 'e', 'r', ' ', 'V', '1', '.', '1', '0', 0x0A, 0x0D, 0x00};
 
 #endif /* _VERSION_H_ */

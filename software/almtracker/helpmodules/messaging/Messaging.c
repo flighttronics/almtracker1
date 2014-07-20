@@ -54,6 +54,7 @@
 #include "led.h"
 #include "config.h"
 #include "time.h"
+#include "version.h"
 
 //-------------------------------------------------------------------------------------------------
 //--------  D E F I N E S  ------------------------------------------------------------------------
@@ -222,6 +223,7 @@ extern unsigned char MsgPrepare_MICE(uint8_t astatus)
     static char tempstr[tempstrlen + 1];
     uint8_t eeprom_data_buffer[EEPROM_DATA_SIZE];
     uint8_t checksum;
+	const char *txt;
     uint16_t hex;
     int16_t i, temp;
     int16_t altitude, speed, track;
@@ -263,17 +265,39 @@ extern unsigned char MsgPrepare_MICE(uint8_t astatus)
     {
         sentence_type = WRITE_EEPROM;
     }
+	else if (0 == strcmp(tempstr, "SWVER")) // cmd to send SW version
+	{
+		sentence_type = SEND_SWVER;
+	}
     else
     {
         return astatus; // Not a valid packet type return previous status
     }
 
-    // Get NMEA time stamp
-    // ------------------
-
     switch (sentence_type)
     {
-        case SEND_EEPROM:
+         case SEND_SWVER:
+         {
+	         checksum = 0;
+			 i = 0;
+			 
+			 txt = firm_version_P;
+			 
+			 USART__SendString_P(txt);
+			 
+			 while (pgm_read_byte(txt) != 0)
+			 {
+				 checksum ^= (uint8_t)pgm_read_byte(txt++); // Send the byte and increment index
+			 }
+
+			  hex = MESSAGING__Uint8ToHex(checksum);
+			  USART__SendByte('*');
+			  USART__SendHexByte(hex);
+			 
+			 break;
+		 }
+		
+		case SEND_EEPROM:
         {
             checksum = 0;
 

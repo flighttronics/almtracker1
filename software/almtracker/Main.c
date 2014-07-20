@@ -216,7 +216,7 @@ int main(void)
         }
         else
         {
-            LED__Set(STATLED, OFF); // Status LED off
+            LED__Set(GPSLED, OFF); // Status LED off
             sleep_cpu();
         }
     }

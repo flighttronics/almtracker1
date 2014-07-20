@@ -123,8 +123,6 @@ namespace AlmConfig
                         }
                     } while (data[b] != '*');
 
-                    serialPort.Close();
-
                     textBoxInfo.Clear();
                     callSign_textBox.Clear();
                     beacon_textBox.Clear();
@@ -185,7 +183,52 @@ namespace AlmConfig
                     {
                         baudRateAlm_comboBox.SelectedIndex = 1;
                     }
-           
+
+                    // Get SW Version
+                    // -------------------------------
+                    string text = "$SWVER,";
+
+                    //Add Checksum
+                    b = 0;
+
+                    for (int i = 1; i < text.Length; i++)
+                    {
+                        b = b ^ (int)text[i];
+                    }
+
+                    text = text + "*";
+                    text = text + b.ToString("X2");
+
+                    serialPort.WriteLine(text);   // Send data request command
+
+                    numBytes = 0;
+                    data = "";
+                 
+                    do
+                    {
+                        a = serialPort.Read(rx, 0, 1);
+
+                        if (a == 1)
+                        {
+                            data = data + rx[0].ToString();
+
+                            numBytes++;
+                        }
+
+                        if ((numBytes - 3) < 0)
+                        {
+                            b = 0;
+                        }
+                        else
+                        {
+                            b = numBytes - 3;
+                        }
+                    } while (data[b] != '*');
+
+                    swVersion_textBox.Text = data.Substring(0, data.Length - 4);
+
+                    serialPort.Close();
+
                     writeConfig_button.Enabled = true;  // Enable Write config
                 }
                 catch (System.Exception ex)
@@ -393,6 +436,28 @@ namespace AlmConfig
         private void baudRateAlm_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort.Open();
+                serialPort.DiscardInBuffer();
+                serialPort.DiscardOutBuffer();
+                serialPort.ReadTimeout = 1500;
+                serialPort.NewLine = "\r\n";
+            
+                serialPort.WriteLine("$GPRMC,101457,A,5832.514,N,01620.754,E,000.0,162.6,130708,002.6,E*75");
+                serialPort.WriteLine("$GPGGA,101456,5832.514,N,01620.754,E,1,05,03,000043,M,0030,M,,*56");
+
+                serialPort.Close();
+            }
+            catch (System.Exception ex)
+            {
+                serialPort.Close();
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
