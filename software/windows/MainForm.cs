@@ -410,7 +410,15 @@ namespace AlmConfig
 
         private void ComPortcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            serialPort.PortName = comPort_comboBox.SelectedItem.ToString();
+            try
+            {
+                serialPort.PortName = comPort_comboBox.SelectedItem.ToString();
+                tabControl.Enabled = true;
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("No serial com port found!");
+            }
         }
 
         private void callSign_textBox_KeyDown(object sender, KeyEventArgs e)

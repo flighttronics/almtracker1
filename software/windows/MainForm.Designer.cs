@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button tx_test_button;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.Button tx_test_button;
             this.callSign_textBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ssid_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -49,7 +48,7 @@
             this.textBoxInfo = new System.Windows.Forms.TextBox();
             this.path_groupBox = new System.Windows.Forms.GroupBox();
             this.routing_comboBox = new System.Windows.Forms.ComboBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.swVersion_textBox = new System.Windows.Forms.TextBox();
@@ -66,7 +65,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.path_groupBox.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -290,16 +289,17 @@
             this.routing_comboBox.TabIndex = 9;
             this.routing_comboBox.ValueMember = "1";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabSettings);
-            this.tabControl1.Controls.Add(this.tabTest);
-            this.tabControl1.Controls.Add(this.tabTerminal);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(369, 359);
-            this.tabControl1.TabIndex = 11;
+            this.tabControl.Controls.Add(this.tabSettings);
+            this.tabControl.Controls.Add(this.tabTest);
+            this.tabControl.Controls.Add(this.tabTerminal);
+            this.tabControl.Enabled = false;
+            this.tabControl.Location = new System.Drawing.Point(12, 12);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(369, 359);
+            this.tabControl.TabIndex = 11;
             // 
             // tabSettings
             // 
@@ -397,16 +397,6 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // tx_test_button
-            // 
-            tx_test_button.Location = new System.Drawing.Point(6, 16);
-            tx_test_button.Name = "tx_test_button";
-            tx_test_button.Size = new System.Drawing.Size(75, 23);
-            tx_test_button.TabIndex = 0;
-            tx_test_button.Text = "TX Test";
-            tx_test_button.UseVisualStyleBackColor = true;
-            tx_test_button.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,7 +404,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(393, 461);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.groupBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MainForm";
@@ -431,7 +421,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.path_groupBox.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -461,7 +451,7 @@
         protected internal System.Windows.Forms.GroupBox path_groupBox;
         private System.Windows.Forms.ComboBox routing_comboBox;
         private System.Windows.Forms.TextBox callSign_textBox;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabSettings;
         private System.Windows.Forms.TabPage tabTest;
         private System.Windows.Forms.TabPage tabTerminal;
