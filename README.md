@@ -36,6 +36,6 @@ Vi ska inte sticka under stolen att vi har hämtat idéer från Open Tracker och
 samvete säga att vi inte har plagierat någon eftersom vi har valt en annan processor och egenmodifierad 
 mjukvara. Vidare skiljer sig konstruktionen på flera punkter.
 
-<a href="img/almtracker_1_schematic_1_1.jpg"><img src="img/almtracker_1_schematic_1_1.jpg" width="300px"></a>
+<a href="img/almtracker_1_schematic_1_1.jpg"><img src="img/almtracker_1_schematic_1_1.jpg" width="600px"></a>
 
 
