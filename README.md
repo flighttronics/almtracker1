@@ -37,5 +37,6 @@ samvete säga att vi inte har plagierat någon eftersom vi har valt en annan pro
 mjukvara. Vidare skiljer sig konstruktionen på flera punkter.
 
 <a href="img/almtracker_1_schematic_1_1.jpg"><img src="img/almtracker_1_schematic_1_1.jpg" width="600px"></a>
+<a href="img/almtracker_1_schematic_1_2.jpg"><img src="img/almtracker_1_schematic_1_1.jpg" width="600px"></a>
 
 
