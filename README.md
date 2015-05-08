@@ -5,6 +5,8 @@ Allmogetrackern är ett projekt som vi har arbetat med sedan hösten 2007.
 Det är en egenkonstruerad APRS tracker lite större än en tändsticksask. Den är gjord 
 på ett kretskort med ytmonterade komponenter.
 
+<a href="img/almtracker1.1x600.jpg"><img src="img/almtracker1.1x600.jpg" width="300px"></a>
+
 Vårt intresse uppstod när vi insåg att APRS är ett bra alternativ till att följa segelflygplan 
 i realtid. Alternativet är bla GPRS via mobiltelefon, men det är både dyrt och inte speciellt 
 driftsäkert (2005). 
@@ -33,5 +35,7 @@ ifråga på över 3000 meter, men även på så låga höjder som 400 m kommer s
 Vi ska inte sticka under stolen att vi har hämtat idéer från Open Tracker och Micro Track, men vi kan med gott 
 samvete säga att vi inte har plagierat någon eftersom vi har valt en annan processor och egenmodifierad 
 mjukvara. Vidare skiljer sig konstruktionen på flera punkter.
+
+<a href="img/almtracker_1_schematic_1_1.jpg"><img src="img/almtracker_1_schematic_1_1.jpg" width="300px"></a>
 
 
